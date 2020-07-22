@@ -6,6 +6,7 @@ module.exports = {
     get_all: async (req, res, next) => {
         Products_model
             .find()
+            .sort({ _id: -1 })
             .then(x => res.send(x))
             .catch(r => res.send(r.message))
 
@@ -22,6 +23,8 @@ module.exports = {
     },
 
     post_one: async (req, res, next) => {
+        console.log("reqeeeeed", req.body);
+
         new Products_model({
             annee: req.body.annee,
             saison: req.body.saison,
@@ -31,7 +34,8 @@ module.exports = {
             modele: req.body.modele,
             name: req.body.name,
             mesure: req.body.mesure,
-            photo: req.body.photo,
+            qte: req.body.qte,
+            photo: req.file.path,
             commentaire: req.body.commentaire
         })
             .save()
@@ -58,6 +62,7 @@ module.exports = {
                     modele: req.body.modele,
                     name: req.body.name,
                     mesure: req.body.mesure,
+                    qte: req.body.qte,
                     photo: req.body.photo,
                     commentaire: req.body.commentaire
                 }

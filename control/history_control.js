@@ -6,6 +6,7 @@ module.exports = {
     get_all: async (req, res, next) => {
         History_model
             .find()
+            .sort({ date: -1 })
             .then(x => res.send(x))
             .catch(r => res.send(r.message))
 

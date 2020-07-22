@@ -14,6 +14,7 @@ const productsSchema = new mongoose.Schema({
     modele: String,
     name: String,
     mesure: String,
+    qte : Number,
     photo: String,
     commentaire: String
 })
