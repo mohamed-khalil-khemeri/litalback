@@ -6,7 +6,7 @@ const users_control = require("../control/users_control");
 
 
 router.get("/", [auth, perm("Administrateur")], users_control.get_all);
-router.get("/:id", [auth, perm("Administrateur", "Opérateur")], users_control.get_one_by_id);
+router.get("/:id", [auth, perm("Administrateur")], users_control.get_one_by_id);
 
 router.post("/", users_control.post_one);
 

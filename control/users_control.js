@@ -47,7 +47,7 @@ module.exports = {
 
     log_one: async (req, res, next) => {
 
-        let logger = await User_model.findOne({ userMail: req.body.userMail });
+        let logger = await User_model.findOne({ userName: req.body.userName });
         if (!logger) return res.status(400).send("Email not found");
 
         const pass = await bcrypt.compare(req.body.passWord, logger.passWord);

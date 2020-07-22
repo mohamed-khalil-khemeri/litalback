@@ -14,17 +14,22 @@ const config = require("config");
 
 const cors = require('cors');
 
+
 //middlewares
 // app.use(function (req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     res.header("Access-Control-Allow-Headers","x-auth-token", "Origin, X-Requested-With, Content-Type, Accept");
 //     next();
 // });
+
 if (!config.get("mysecretjwtkey")) {
     console.error("jwt secret key not defined !");
     process.exit(1);
 };
-app.use(cors());
+//app.use(cors());
+app.use(cors({
+    exposedHeaders: ['x-auth-token'],
+}));
 app.use([bodyParser.urlencoded({ extended: true }), bodyParser.json()]);
 
 app.use("/public_img", express.static("public_img"))
