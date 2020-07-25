@@ -22,6 +22,7 @@ usersSchema.methods.token_gen = function () {
         {
             _id: this._id,
             firstName: this.firstName,
+            userName : this.userName,
             userPost: this.userPost
         },
         config.get("mysecretjwtkey"));

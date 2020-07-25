@@ -63,7 +63,7 @@ module.exports = {
                     name: req.body.name,
                     mesure: req.body.mesure,
                     qte: req.body.qte,
-                    photo: req.body.photo,
+                    photo: req.file.path,
                     commentaire: req.body.commentaire
                 }
             })
